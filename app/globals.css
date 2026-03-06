@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 body {
-  background-color: #111827;
-  color: #ffffff;
+  background-color: #111827; /* ডার্ক ব্যাকগ্রাউন্ড */
+  color: #ffffff; /* সাদা টেক্সট */
 }
-.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+
+/* মোবাইল ডিভাইসের নিচের অংশের জন্য সেফ এরিয়া */
+.pb-safe { 
+  padding-bottom: env(safe-area-inset-bottom, 20px); 
+}
