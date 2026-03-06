@@ -1,4 +1,4 @@
-import './globals.css';
+import './globals.css'; // এই লাইনটি সবচেয়ে জরুরি!
 import Script from 'next/script';
 
 export const metadata = {
@@ -12,7 +12,8 @@ export default function RootLayout({ children }) {
       <head>
         <Script src="https://telegram.org/js/telegram-web-app.js" strategy="beforeInteractive" />
       </head>
-      <body className="select-none">
+      {/* বডির ব্যাকগ্রাউন্ড এবং টেক্সট কালার এখানে দিয়ে দিলাম */}
+      <body className="bg-gray-900 text-white select-none">
         {children}
       </body>
     </html>
