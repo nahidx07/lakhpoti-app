@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #111827;
+  color: #ffffff;
+}
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
