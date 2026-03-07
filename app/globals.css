@@ -1,13 +1,35 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* =========================================
+   Global CSS - Lakhpoti Mini App
+   ========================================= */
 
-body {
-  background-color: #f3f4f6; /* Light gray background */
-  color: #1f2937; /* Dark text */
-  -webkit-tap-highlight-color: transparent;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
+body {
+  background-color: #f3f4f6; /* লাইট গ্রে ব্যাকগ্রাউন্ড */
+  color: #1f2937; /* টেক্সট কালার */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* মোবাইলে বাটনে ক্লিক করলে নীল রঙের বর্ডার আসা বন্ধ করবে */
+  -webkit-tap-highlight-color: transparent; 
+}
+
+/* নিচের মেনুবারের (Bottom Nav) জন্য নিরাপদ জায়গা তৈরি */
 .pb-safe { 
-  padding-bottom: env(safe-area-inset-bottom, 80px); 
+  padding-bottom: calc(80px + env(safe-area-inset-bottom)); 
+}
+
+/* অ্যাপের ভেতর স্ক্রলবার (Scrollbar) লুকিয়ে রাখার কোড (প্রিমিয়াম লুকের জন্য) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
