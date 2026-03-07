@@ -1,7 +1,3 @@
-/* =========================================
-   Global CSS - Lakhpoti Mini App
-   ========================================= */
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -9,27 +5,20 @@
 }
 
 body {
-  background-color: #f3f4f6; /* লাইট গ্রে ব্যাকগ্রাউন্ড */
-  color: #1f2937; /* টেক্সট কালার */
+  background-color: #f3f4f6; 
+  color: #1f2937; 
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  /* মোবাইলে বাটনে ক্লিক করলে নীল রঙের বর্ডার আসা বন্ধ করবে */
   -webkit-tap-highlight-color: transparent; 
 }
 
-/* নিচের মেনুবারের (Bottom Nav) জন্য নিরাপদ জায়গা তৈরি */
-.pb-safe { 
-  padding-bottom: calc(80px + env(safe-area-inset-bottom)); 
-}
-
-/* অ্যাপের ভেতর স্ক্রলবার (Scrollbar) লুকিয়ে রাখার কোড (প্রিমিয়াম লুকের জন্য) */
+/* মিনি অ্যাপের ভেতর থেকে ডিফল্ট স্ক্রলবার লুকিয়ে রাখার কোড */
 ::-webkit-scrollbar {
   display: none;
 }
 
 html {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
