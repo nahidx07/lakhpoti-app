@@ -5,6 +5,9 @@ import { Headphones } from 'lucide-react';
 export default function Header() {
   const { user } = useStore();
 
+  // ইউজারের ছবি না থাকলে নামের প্রথম অক্ষর দিয়ে ছবি বানাবে
+  const profileImage = user?.photo_url || `https://ui-avatars.com/api/?name=${user?.name || 'U'}&background=059669&color=fff&bold=true`;
+
   return (
     <div className="relative mb-6">
       {/* উপরের সবুজ অংশ */}
@@ -12,13 +15,13 @@ export default function Header() {
         <div className="flex justify-between items-center text-white">
           <div className="flex items-center gap-3 bg-white/20 px-3 py-1.5 rounded-full">
             <img 
-              src="https://ui-avatars.com/api/?name=User&background=random" 
+              src={profileImage} 
               alt="Profile" 
-              className="w-8 h-8 rounded-full border-2 border-white"
+              className="w-9 h-9 rounded-full border-2 border-white object-cover bg-white"
             />
             <div>
-              <h2 className="text-sm font-bold">{user?.name || "আপনার নাম"}</h2>
-              <p className="text-[10px] opacity-80">ID: {user?.telegram_id || "12345678"}</p>
+              <h2 className="text-sm font-bold">{user?.name || "লোড হচ্ছে..."}</h2>
+              <p className="text-[10px] opacity-80">ID: {user?.telegram_id || "..."}</p>
             </div>
           </div>
           <button className="bg-white/20 p-2 rounded-full backdrop-blur-sm">
