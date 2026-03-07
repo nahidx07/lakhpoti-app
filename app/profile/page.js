@@ -1,12 +1,16 @@
 "use client";
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
-import { Copy, Send } from 'lucide-react';
+import { Copy, Send, Settings } from 'lucide-react';
 import { useStore } from '@/lib/store';
+import Link from 'next/link';
 
 export default function Profile() {
   const { user } = useStore();
   const refLink = `https://t.me/lakhpoti_bot?start=${user?.telegram_id || '12345'}`;
+  
+  // আপনার টেলিগ্রাম আইডি এখানে দেওয়া হলো (স্ক্রিনশট থেকে নেওয়া)
+  const ADMIN_ID = "5024973191"; 
 
   const copyLink = () => {
     navigator.clipboard.writeText(refLink);
@@ -16,6 +20,15 @@ export default function Profile() {
   return (
     <div className="min-h-screen pb-24 bg-[#f3f4f6]">
       <Header />
+
+      {/* অ্যাডমিন প্যানেল বাটন (শুধুমাত্র আপনি দেখতে পাবেন) */}
+      {user?.telegram_id === ADMIN_ID && (
+        <div className="px-5 mb-6">
+          <Link href="/admin" className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-sm transition-colors">
+            <Settings size={20} /> অ্যাডমিন ড্যাশবোর্ডে প্রবেশ করুন
+          </Link>
+        </div>
+      )}
 
       {/* দাওয়াত সেকশন */}
       <div className="px-5 mb-6">
@@ -34,51 +47,17 @@ export default function Profile() {
           </div>
 
           <div className="flex gap-2">
-            <button className="flex-1 bg-[#059669] hover:bg-green-700 text-white font-bold py-3 rounded-xl flex justify-center items-center gap-2 transition-colors">
+            <button className="flex-1 bg-[#059669] text-white font-bold py-3 rounded-xl flex justify-center items-center gap-2">
               <Send size={16} /> শেয়ার করুন
             </button>
-            <button onClick={copyLink} className="bg-yellow-400 hover:bg-yellow-500 text-white p-3 rounded-xl transition-colors">
+            <button onClick={copyLink} className="bg-yellow-400 text-white p-3 rounded-xl">
               <Copy size={20} />
             </button>
           </div>
         </div>
       </div>
 
-      {/* রেফার মাইলস্টোন */}
-      <div className="px-5">
-        <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-          <span className="text-green-600 text-2xl">🎁</span> রেফার মাইলস্টোন 🎁
-        </h3>
-        
-        <div className="flex flex-col gap-3">
-          <MilestoneCard target="৫০ জনকে দাওয়াত দিন" reward="250" progress="0/50" percentage={0} />
-          <MilestoneCard target="১০০ জনকে দাওয়াত দিন" reward="500" progress="0/100" percentage={0} />
-          <MilestoneCard target="২৫০ জনকে দাওয়াত দিন" reward="1250" progress="0/250" percentage={0} />
-        </div>
-      </div>
-
       <BottomNav />
-    </div>
-  );
-}
-
-function MilestoneCard({ target, reward, progress, percentage }) {
-  return (
-    <div className="bg-white p-4 rounded-2xl shadow-sm border-l-4 border-yellow-400 relative overflow-hidden">
-      <div className="flex justify-between items-start mb-3">
-        <div>
-          <h4 className="font-bold text-gray-800 text-sm">{target}</h4>
-          <p className="text-green-600 font-bold text-xs mt-1">🪙 বোনাস: {reward} টাকা</p>
-        </div>
-        <div className="bg-yellow-100 text-yellow-700 font-bold text-xs px-3 py-1.5 rounded-full">
-          {progress}
-        </div>
-      </div>
-      {/* Progress bar background */}
-      <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
-        {/* Progress bar fill */}
-        <div className="bg-green-500 h-full rounded-full" style={{ width: `${percentage}%` }}></div>
-      </div>
     </div>
   );
 }
